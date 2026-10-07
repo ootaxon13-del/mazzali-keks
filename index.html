@@ -1,0 +1,4230 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🍰 Mozzi Kexs</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0
+}
+
+body{
+    font-family:Arial,sans-serif;
+    color:#4d3036;
+    background:
+    radial-gradient(circle at 10% 10%,#fff 0,#fff6f2 35%,transparent 60%),
+    linear-gradient(135deg,#fff9f7,#ffe6df)
+}
+
+button,input,select,textarea{
+    font-family:inherit
+}
+
+button{
+    cursor:pointer
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    padding:14px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    background:#fffaf8ee;
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #ead8d3
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#76283a
+}
+
+.navlinks{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    justify-content:flex-end
+}
+
+.navlinks button{
+    border:0;
+    background:#fff0eb;
+    color:#702638;
+    padding:9px 13px;
+    border-radius:20px;
+    font-weight:bold
+}
+
+.navlinks button:hover,
+.cartBtn{
+    background:#76283a!important;
+    color:white!important
+}
+
+/* HERO */
+
+.hero{
+    max-width:1200px;
+    margin:25px auto;
+    padding:0 18px
+}
+
+.heroBox{
+    min-height:450px;
+    border-radius:30px;
+    padding:50px;
+    display:flex;
+    align-items:center;
+    color:white;
+
+    background:
+    linear-gradient(90deg,#40151de8,#40151d20),
+    url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=90")
+    center/cover
+}
+
+.heroText{
+    max-width:650px
+}
+
+.hero h1{
+    font-size:50px;
+    margin-bottom:18px
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.7
+}
+
+.heroStats{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:25px
+}
+
+.heroStats span{
+    background:#ffffff28;
+    padding:10px 15px;
+    border-radius:18px
+}
+
+/* SECTIONS */
+
+.section,
+.admin{
+    max-width:1200px;
+    margin:60px auto;
+    padding:0 18px
+}
+
+.title{
+    text-align:center;
+    margin-bottom:28px
+}
+
+.title h2{
+    font-size:35px;
+    color:#76283a
+}
+
+.title p{
+    margin-top:8px;
+    color:#96777d
+}
+
+/* FILTER */
+
+.filters{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:25px
+}
+
+.filters button{
+    padding:10px 18px;
+    border:1px solid #e4ccc6;
+    background:#fff;
+    border-radius:20px;
+    color:#702638;
+    font-weight:bold
+}
+
+.filters button.active{
+    background:#76283a;
+    color:#fff
+}
+
+/* CARDS */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px
+}
+
+.card{
+    background:#ffffffdf;
+    border:1px solid #ead8d3;
+    border-radius:23px;
+    overflow:hidden;
+    box-shadow:0 10px 30px #5a283212
+}
+
+.cardImg{
+    height:230px;
+    position:relative;
+    background:#eee
+}
+
+.cardImg img{
+    width:100%;
+    height:100%;
+    object-fit:cover
+}
+
+.badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:white;
+    color:#76283a;
+    padding:6px 10px;
+    border-radius:15px;
+    font-size:11px;
+    font-weight:bold
+}
+
+.cardBody{
+    padding:17px
+}
+
+.cardBody h3{
+    font-size:22px;
+    color:#702638
+}
+
+.desc{
+    font-size:12px;
+    color:#96777d;
+    margin:6px 0
+}
+
+.ingredients{
+    background:#fff7f3;
+    border:1px solid #eddcd6;
+    padding:10px;
+    border-radius:12px;
+    font-size:11px;
+    margin:12px 0
+}
+
+.stock{
+    font-size:11px;
+    color:#887077;
+    margin-bottom:9px
+}
+
+.priceRow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center
+}
+
+.price{
+    font-size:19px;
+    font-weight:bold;
+    color:#76283a
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:7px
+}
+
+.qty button{
+    width:30px;
+    height:30px;
+    border:0;
+    border-radius:50%;
+    background:#f0ddd8;
+    color:#76283a;
+    font-size:18px
+}
+
+/* RATING */
+
+.rating{
+    display:flex;
+    align-items:center;
+    gap:2px;
+    margin-top:12px
+}
+
+.star{
+    border:0;
+    background:none;
+    font-size:22px;
+    color:#d8c9c4;
+    padding:0
+}
+
+.star.active{
+    color:#ffb400
+}
+
+.ratingText{
+    font-size:11px;
+    color:#887177;
+    margin-left:5px
+}
+
+.commentBtn{
+    width:100%;
+    margin-top:10px;
+    padding:9px;
+    border:1px solid #ead5ce;
+    background:#fff7f3;
+    border-radius:15px;
+    color:#76283a;
+    font-weight:bold
+}
+
+.commentForm{
+    display:none;
+    margin-top:8px
+}
+
+.commentForm textarea{
+    width:100%;
+    min-height:70px;
+    border:1px solid #e5d1cb;
+    border-radius:12px;
+    padding:9px
+}
+
+.commentForm button{
+    width:100%;
+    margin-top:6px;
+    padding:9px;
+    border:0;
+    background:#76283a;
+    color:#fff;
+    border-radius:14px
+}
+
+.comment{
+    background:#fff7f3;
+    border-left:3px solid #c87857;
+    padding:9px;
+    margin-top:7px;
+    border-radius:8px;
+    font-size:12px
+}
+
+.commentStars{
+    color:#ffb400
+}
+
+/* ABOUT */
+
+.about{
+    background:white;
+    border:1px solid #ead8d3;
+    border-radius:25px;
+    padding:35px;
+    text-align:center
+}
+
+.about h2{
+    color:#76283a;
+    margin-bottom:12px
+}
+
+.about p{
+    line-height:1.8;
+    color:#765e64
+}
+
+/* CONTACT */
+
+.contacts{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px
+}
+
+.contact{
+    background:#fff;
+    border:1px solid #ead8d3;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    text-decoration:none;
+    color:#702638;
+    font-weight:bold
+}
+
+/* FOOTER */
+
+footer{
+    background:#54222e;
+    color:#fff;
+    text-align:center;
+    padding:40px 20px;
+    margin-top:60px
+}
+
+footer a{
+    display:inline-block;
+    color:#fff;
+    text-decoration:none;
+    background:#702b3c;
+    padding:9px 13px;
+    border-radius:18px;
+    margin:12px 4px;
+    font-size:12px
+}
+
+/* SETTINGS */
+
+.settingsBtn{
+    position:fixed;
+    right:18px;
+    bottom:20px;
+    z-index:1800;
+    width:58px;
+    height:58px;
+    border:0;
+    border-radius:50%;
+    background:#76283a;
+    color:white;
+    font-size:25px;
+    box-shadow:0 8px 25px #76283a55
+}
+
+.settings{
+    position:fixed;
+    right:0;
+    top:0;
+    height:100%;
+    width:min(500px,96%);
+    background:#fffaf8;
+    z-index:3000;
+    transform:translateX(100%);
+    transition:.3s;
+    overflow-y:auto;
+    box-shadow:-15px 0 45px #0003
+}
+
+.settings.show{
+    transform:translateX(0)
+}
+
+.settingsHead{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    border-bottom:1px solid #ead8d3;
+    position:sticky;
+    top:0;
+    background:#fffaf8;
+    z-index:5
+}
+
+.settingsHead h2{
+    color:#76283a
+}
+
+.settingsBody{
+    padding:20px
+}
+
+.setSection{
+    background:white;
+    border:1px solid #ead8d3;
+    border-radius:20px;
+    padding:16px;
+    margin-bottom:15px
+}
+
+.setSection h3{
+    color:#76283a;
+    margin-bottom:13px
+}
+
+.setSection label,
+.editBox label{
+    display:block;
+    font-size:12px;
+    font-weight:bold;
+    margin:10px 0 5px
+}
+
+.setSection input,
+.setSection select,
+.setSection textarea,
+.editBox input,
+.editBox select{
+    width:100%;
+    padding:10px;
+    border:1px solid #e1cbc5;
+    border-radius:11px;
+    background:white
+}
+
+.setBtn{
+    width:100%;
+    padding:11px;
+    border:0;
+    background:#76283a;
+    color:white;
+    border-radius:13px;
+    margin-top:9px;
+    font-weight:bold
+}
+
+/* IMAGE */
+
+.imagePicker{
+    border:2px dashed #d7bdb6;
+    border-radius:17px;
+    padding:18px;
+    text-align:center;
+    background:#fff8f5;
+    margin-top:7px
+}
+
+.imagePreview{
+    display:none;
+    margin-top:10px
+}
+
+.imagePreview img,
+.editImagePreview img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:15px
+}
+
+/* MANAGE */
+
+.manageItem{
+    padding:13px 0;
+    border-bottom:1px solid #eee0dc
+}
+
+.manageTop{
+    display:flex;
+    gap:10px;
+    align-items:center
+}
+
+.manageThumb{
+    width:58px;
+    height:58px;
+    border-radius:12px;
+    object-fit:cover
+}
+
+.manageInfo{
+    flex:1
+}
+
+.manageInfo b{
+    color:#76283a
+}
+
+.manageInfo small{
+    display:block;
+    color:#887077;
+    margin-top:4px
+}
+
+.manageButtons{
+    display:flex;
+    gap:6px;
+    margin-top:9px
+}
+
+.manageButtons button{
+    border:0;
+    padding:8px 11px;
+    border-radius:10px;
+    font-size:11px;
+    font-weight:bold
+}
+
+.editBtn{
+    background:#fff0eb;
+    color:#76283a
+}
+
+.deleteBtn{
+    background:#fee0dc;
+    color:#a52e29
+}
+
+/* EDIT */
+
+.editModal{
+    position:fixed;
+    inset:0;
+    z-index:4000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:#1e0a0f80;
+    padding:15px
+}
+
+.editModal.show{
+    display:flex
+}
+
+.editBox{
+    width:min(500px,100%);
+    max-height:94vh;
+    overflow-y:auto;
+    background:#fffaf8;
+    border-radius:25px;
+    padding:22px;
+    box-shadow:0 20px 60px #0004
+}
+
+.editHead{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px
+}
+
+.editHead h2{
+    color:#76283a
+}
+
+.close{
+    border:0;
+    background:#f0ddd8;
+    border-radius:50%;
+    width:35px;
+    height:35px;
+    font-size:20px
+}
+
+.editButtons{
+    display:flex;
+    gap:8px;
+    margin-top:15px
+}
+
+.editButtons button{
+    flex:1;
+    padding:12px;
+    border:0;
+    border-radius:14px;
+    font-weight:bold
+}
+
+.saveEdit{
+    background:#76283a;
+    color:white
+}
+
+.cancelEdit{
+    background:#eadbd7;
+    color:#5d464b
+}
+
+/* CART */
+
+.cart{
+    position:fixed;
+    right:0;
+    top:0;
+    height:100%;
+    width:min(430px,95%);
+    background:#fffaf8;
+    z-index:2100;
+    transform:translateX(100%);
+    transition:.3s;
+    overflow-y:auto;
+    box-shadow:-15px 0 40px #0003
+}
+
+.cart.show{
+    transform:translateX(0)
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:#1e0a0f75;
+    display:none;
+    z-index:2000
+}
+
+.overlay.show{
+    display:block
+}
+
+.cartHead{
+    padding:18px;
+    border-bottom:1px solid #ead8d3;
+    display:flex;
+    justify-content:space-between;
+    align-items:center
+}
+
+.cartHead h2{
+    color:#76283a
+}
+
+.cartItems{
+    padding:18px
+}
+
+.cartItem{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px 0;
+    border-bottom:1px solid #eee0dc
+}
+
+.cartTotal{
+    padding:20px;
+    border-top:1px solid #ead8d3
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    font-size:20px;
+    font-weight:bold;
+    color:#76283a
+}
+
+.payTitle{
+    margin-top:18px;
+    font-weight:bold
+}
+
+.payBtns{
+    display:flex;
+    gap:8px;
+    margin-top:8px
+}
+
+.pay{
+    flex:1;
+    padding:10px;
+    border:1px solid #e5d0ca;
+    background:white;
+    border-radius:12px
+}
+
+.pay.selected{
+    background:#76283a;
+    color:white
+}
+
+.checkout{
+    width:100%;
+    padding:13px;
+    margin-top:14px;
+    border:0;
+    border-radius:17px;
+    background:#76283a;
+    color:white;
+    font-weight:bold
+}
+
+/* ADMIN */
+
+.adminPanel{
+    display:none
+}
+
+.adminPanel.show{
+    display:block
+}
+
+.adminHeader{
+    background:linear-gradient(135deg,#59222f,#7b293d);
+    color:white;
+    border-radius:25px;
+    padding:28px;
+    margin-bottom:20px
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px
+}
+
+.stat{
+    background:white;
+    border:1px solid #ead8d3;
+    border-radius:20px;
+    padding:18px
+}
+
+.stat small{
+    color:#8d7076
+}
+
+.stat strong{
+    display:block;
+    margin-top:7px;
+    color:#76283a;
+    font-size:20px
+}
+
+/* HAFTA VA OY */
+
+.periodBox{
+    background:white;
+    border:1px solid #ead8d3;
+    border-radius:23px;
+    padding:20px;
+    margin:20px 0
+}
+
+.periodBox h2{
+    color:#76283a;
+    margin-bottom:5px
+}
+
+.periodBox p{
+    color:#96777d;
+    font-size:13px;
+    margin-bottom:15px
+}
+
+.periodRow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:13px;
+    margin:7px 0;
+    background:#fff7f3;
+    border-radius:13px;
+    border:1px solid #f0ded8
+}
+
+.periodRow b{
+    color:#76283a
+}
+
+.periodRow span{
+    font-weight:bold;
+    color:#168449;
+    text-align:right
+}
+
+/* COMPARE */
+
+.compare{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin:18px 0
+}
+
+.compareBox{
+    background:white;
+    border:1px solid #ead8d3;
+    border-radius:20px;
+    padding:18px
+}
+
+.compareBox h3{
+    color:#76283a;
+    margin-bottom:8px
+}
+
+/* TABLE */
+
+.tableBox{
+    background:white;
+    border:1px solid #ead8d3;
+    border-radius:23px;
+    padding:18px;
+    overflow-x:auto
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px
+}
+
+th{
+    background:#fff0eb;
+    color:#76283a;
+    padding:11px;
+    text-align:left
+}
+
+td{
+    padding:11px;
+    border-bottom:1px solid #f0e0db;
+    font-size:12px
+}
+
+.adminBtns{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:15px
+}
+
+.adminBtns button{
+    padding:11px 16px;
+    border:0;
+    border-radius:17px;
+    font-weight:bold
+}
+
+.closeAdmin{
+    background:#76283a;
+    color:white
+}
+
+.reset{
+    background:#fee0dc;
+    color:#a52e29
+}
+
+@media(max-width:950px){
+
+.grid{
+    grid-template-columns:repeat(2,1fr)
+}
+
+.stats{
+    grid-template-columns:repeat(2,1fr)
+}
+
+}
+
+@media(max-width:650px){
+
+nav{
+    align-items:flex-start
+}
+
+.logo{
+    font-size:19px
+}
+
+.navlinks button{
+    font-size:11px;
+    padding:8px 9px
+}
+
+.heroBox{
+    padding:30px 25px;
+    min-height:400px
+}
+
+.hero h1{
+    font-size:36px
+}
+
+.grid,
+.contacts,
+.stats,
+.compare{
+    grid-template-columns:1fr
+}
+
+.periodRow{
+    gap:10px
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+🍰 Mozzi Kexs
+</div>
+
+<div class="navlinks">
+
+<button onclick="go('products')">
+🍰 Kekslar
+</button>
+
+<button onclick="go('tea')">
+🍵 Choylar
+</button>
+
+<button onclick="go('about')">
+ℹ️ Biz haqimizda
+</button>
+
+<button onclick="toggleAdmin()">
+📊 Statistika
+</button>
+
+<button class="cartBtn" onclick="openCart()">
+🛒 Savdo <span id="cartCount">0</span>
+</button>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="heroBox">
+
+<div class="heroText">
+
+<h1>
+Har bir luqma — baxtning kichik bo‘lagi
+</h1>
+
+<p>
+Mazali kekslar, xushbo‘y choylar va yoqimli kayfiyat. 🍰
+</p>
+
+<div class="heroStats">
+
+<span>🕖 07:00 dan</span>
+<span>⭐ 100% sifat</span>
+<span>🚚 45 daqiqa</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- KEKSLAR -->
+
+<section class="section" id="products">
+
+<div class="title">
+
+<h2>
+🍰 Mozzi Kexs mahsulotlari
+</h2>
+
+<p>
+Eng mazali kekslarimiz
+</p>
+
+</div>
+
+<div class="filters">
+
+<button class="active" onclick="filter('all',this)">
+Barchasi
+</button>
+
+<button onclick="filter('cake',this)">
+🍰 Kekslar
+</button>
+
+<button onclick="filter('popular',this)">
+⭐ Mashhur
+</button>
+
+<button onclick="filter('new',this)">
+✨ Yangi
+</button>
+
+</div>
+
+<div class="grid" id="cakeGrid"></div>
+
+</section>
+
+
+<!-- CHOYLAR -->
+
+<section class="section" id="tea">
+
+<div class="title">
+
+<h2>
+🍵 Choylar
+</h2>
+
+<p>
+Kekslaringizga mos ichimliklar
+</p>
+
+</div>
+
+<div class="grid" id="teaGrid"></div>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section class="admin">
+
+<div class="adminPanel" id="adminPanel">
+
+<div class="adminHeader">
+
+<h2>
+📊 Mozzi Kexs savdo statistikasi
+</h2>
+
+<p>
+Naqd va karta orqali tushgan pullar
+</p>
+
+</div>
+
+
+<!-- ASOSIY STATISTIKA -->
+
+<div class="stats">
+
+<div class="stat">
+<small>💰 Bugungi savdo</small>
+<strong id="todayRevenue">0 so‘m</strong>
+</div>
+
+<div class="stat">
+<small>💵 Bugungi naqd</small>
+<strong id="todayCash">0 so‘m</strong>
+</div>
+
+<div class="stat">
+<small>💳 Bugungi karta</small>
+<strong id="todayCard">0 so‘m</strong>
+</div>
+
+<div class="stat">
+<small>📦 Bugun sotildi</small>
+<strong id="todayCount">0 dona</strong>
+</div>
+
+<div class="stat">
+<small>💰 Bugungi foyda</small>
+<strong id="todayProfit">0 so‘m</strong>
+</div>
+
+<div class="stat">
+<small>📅 Kechagi savdo</small>
+<strong id="yesterdayRevenue">0 so‘m</strong>
+</div>
+
+<div class="stat">
+<small>📈 Farq</small>
+<strong id="difference">0 so‘m</strong>
+</div>
+
+<div class="stat">
+<small>📦 Jami qoldiq</small>
+<strong id="totalStock">0 dona</strong>
+</div>
+
+</div>
+
+
+<!-- HAFTALIK -->
+
+<div class="periodBox">
+
+<h2>
+📅 Haftalik savdo
+</h2>
+
+<p>
+Har bir hafta bo‘yicha tushgan jami pul
+</p>
+
+<div id="weeklyStats"></div>
+
+</div>
+
+
+<!-- OYLIK -->
+
+<div class="periodBox">
+
+<h2>
+📆 Oylik savdo
+</h2>
+
+<p>
+Har bir oy bo‘yicha tushgan jami pul
+</p>
+
+<div id="monthlyStats"></div>
+
+</div>
+
+
+<!-- QO‘SHIMCHA -->
+
+<div class="compare">
+
+<div class="compareBox">
+
+<h3>
+💵 Kecha naqd
+</h3>
+
+<b id="yesterdayCash">
+0 so‘m
+</b>
+
+</div>
+
+<div class="compareBox">
+
+<h3>
+💳 Kecha karta
+</h3>
+
+<b id="yesterdayCard">
+0 so‘m
+</b>
+
+</div>
+
+<div class="compareBox">
+
+<h3>
+🏆 Eng ko‘p sotilgan
+</h3>
+
+<b id="bestProduct">
+—
+</b>
+
+</div>
+
+</div>
+
+
+<!-- MAHSULOT STATISTIKASI -->
+
+<div class="tableBox">
+
+<h3 style="color:#76283a;margin-bottom:15px">
+📋 Mahsulotlar statistikasi
+</h3>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Mahsulot
+</th>
+
+<th>
+Sotildi
+</th>
+
+<th>
+Jami
+</th>
+
+<th>
+Tannarx
+</th>
+
+<th>
+Foyda
+</th>
+
+<th>
+Qoldiq
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="statsTable"></tbody>
+
+</table>
+
+
+<div class="adminBtns">
+
+<button class="closeAdmin" onclick="toggleAdmin()">
+✕ Yopish
+</button>
+
+<button class="reset" onclick="resetSales()">
+🗑 Savdoni tozalash
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+
+<div class="about">
+
+<h2>
+🍰 Mozzi Kexs haqida
+</h2>
+
+<p>
+Mozzi Kexs sifatli mahsulotlardan tayyorlangan kekslar
+va xushbo‘y choylarni taqdim etadi.
+Har bir mahsulot mijozlar uchun mazali va yoqimli
+tajriba berish uchun tayyorlanadi.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ALOQA -->
+
+<section class="section">
+
+<div class="title">
+
+<h2>
+📞 Aloqa
+</h2>
+
+</div>
+
+<div class="contacts">
+
+<a class="contact" href="tel:884348818">
+📞<br>
+884348818<br>
+<small>Telefon</small>
+</a>
+
+<a class="contact"
+href="https://instagram.com/fit_lider_atlet"
+target="_blank">
+
+📸<br>
+@fit_lider_atlet<br>
+<small>Instagram</small>
+
+</a>
+
+<a class="contact"
+href="https://t.me/otush_ne"
+target="_blank">
+
+✈️<br>
+@otush_ne<br>
+<small>Telegram</small>
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>
+🍰 Mozzi Kexs
+</h2>
+
+<p>
+Shirin kunlar shu yerdan boshlanadi.
+</p>
+
+<a href="tel:884348818">
+📞 884348818
+</a>
+
+<a href="https://instagram.com/fit_lider_atlet" target="_blank">
+📸 Instagram
+</a>
+
+<a href="https://t.me/otush_ne" target="_blank">
+✈️ Telegram
+</a>
+
+<p style="font-size:11px;color:#d8bfc4;margin-top:10px">
+© 2026 Mozzi Kexs
+</p>
+
+</footer>
+
+
+<!-- SETTINGS BUTTON -->
+
+<button class="settingsBtn" onclick="openSettings()">
+⚙️
+</button>
+
+
+<!-- SETTINGS -->
+
+<div class="settings" id="settings">
+
+<div class="settingsHead">
+
+<h2>
+⚙️ Mozzi Kexs
+</h2>
+
+<button class="close" onclick="closeSettings()">
+×
+</button>
+
+</div>
+
+
+<div class="settingsBody">
+
+
+<!-- TIL -->
+
+<div class="setSection">
+
+<h3>
+🌐 Til
+</h3>
+
+<select id="language">
+
+<option value="uz">
+🇺🇿 O‘zbekcha
+</option>
+
+<option value="ru">
+🇷🇺 Русский
+</option>
+
+<option value="en">
+🇬🇧 English
+</option>
+
+</select>
+
+<button class="setBtn" onclick="changeLanguage()">
+💾 Saqlash
+</button>
+
+</div>
+
+
+<!-- PUL -->
+
+<div class="setSection">
+
+<h3>
+💰 Pul statistikasi
+</h3>
+
+<p style="line-height:2">
+
+💰 Umumiy:
+<b id="setTotal">0 so‘m</b>
+<br>
+
+💵 Naqd:
+<b id="setCash">0 so‘m</b>
+<br>
+
+💳 Karta:
+<b id="setCard">0 so‘m</b>
+<br>
+
+📅 Bugun:
+<b id="setToday">0 so‘m</b>
+<br>
+
+📅 Kecha:
+<b id="setYesterday">0 so‘m</b>
+
+</p>
+
+</div>
+
+
+<!-- MAHSULOT BOSHQARUV -->
+
+<div class="setSection">
+
+<h3>
+📦 Mahsulotlarni boshqarish
+</h3>
+
+<div id="manageProducts"></div>
+
+</div>
+
+
+<!-- YANGI MAHSULOT -->
+
+<div class="setSection">
+
+<h3>
+➕ Yangi mahsulot qo‘shish
+</h3>
+
+<label>
+Mahsulot nomi
+</label>
+
+<input id="newName" placeholder="Masalan: Chocolate Cake">
+
+
+<label>
+Narxi
+</label>
+
+<input id="newPrice" type="number" placeholder="45000">
+
+
+<label>
+Tannarxi
+</label>
+
+<input id="newCost" type="number" placeholder="25000">
+
+
+<label>
+Qoldiq
+</label>
+
+<input id="newStock" type="number" placeholder="50">
+
+
+<label>
+Kategoriya
+</label>
+
+<select id="newCategory">
+
+<option value="cake">
+🍰 Keks
+</option>
+
+<option value="tea">
+🍵 Choy
+</option>
+
+</select>
+
+
+<label>
+Og‘irligi
+</label>
+
+<input id="newWeight" placeholder="180 g">
+
+
+<label>
+Tarkibi
+</label>
+
+<input id="newIngredients"
+placeholder="Un, Tuxum, Shakar">
+
+
+<label>
+📷 Rasm
+</label>
+
+<div class="imagePicker"
+onclick="document.getElementById('newImage').click()">
+
+📷 Kompyuterdan rasm yoki screenshot tanlash
+
+</div>
+
+<input
+id="newImage"
+type="file"
+accept="image/*"
+style="display:none"
+>
+
+<div class="imagePreview" id="newPreview">
+
+<img id="newPreviewImg">
+
+</div>
+
+<button class="setBtn" onclick="addProduct()">
+
+➕ Mahsulot qo‘shish
+
+</button>
+
+</div>
+
+
+<!-- KARTA -->
+
+<div class="setSection">
+
+<h3>
+💳 Karta
+</h3>
+
+<label>
+Karta raqami
+</label>
+
+<input
+id="cardNumber"
+value="9860 1609 4609 5671"
+>
+
+<button class="setBtn" onclick="saveCard()">
+💾 Saqlash
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- EDIT MODAL -->
+
+<div class="editModal" id="editModal">
+
+<div class="editBox">
+
+<div class="editHead">
+
+<h2>
+✏️ Mahsulotni tahrirlash
+</h2>
+
+<button class="close" onclick="closeEdit()">
+×
+</button>
+
+</div>
+
+<input type="hidden" id="editId">
+
+
+<label>
+Mahsulot nomi
+</label>
+
+<input id="editName">
+
+
+<label>
+💰 Narxi
+</label>
+
+<input id="editPrice" type="number">
+
+
+<label>
+💵 Tannarxi
+</label>
+
+<input id="editCost" type="number">
+
+
+<label>
+📦 Qoldiq
+</label>
+
+<input id="editStock" type="number">
+
+
+<label>
+📂 Kategoriya
+</label>
+
+<select id="editCategory">
+
+<option value="cake">
+🍰 Keks
+</option>
+
+<option value="tea">
+🍵 Choy
+</option>
+
+</select>
+
+
+<label>
+⚖️ Og‘irligi
+</label>
+
+<input id="editWeight">
+
+
+<label>
+🥣 Tarkibi
+</label>
+
+<input id="editIngredients">
+
+
+<label>
+📷 Yangi rasm
+</label>
+
+<div class="imagePicker"
+onclick="document.getElementById('editImage').click()">
+
+📷 Yangi rasm tanlash
+
+</div>
+
+<input
+id="editImage"
+type="file"
+accept="image/*"
+style="display:none"
+>
+
+<div class="editImagePreview">
+
+<img id="editPreviewImg">
+
+</div>
+
+
+<div class="editButtons">
+
+<button class="cancelEdit"
+onclick="closeEdit()">
+
+Bekor qilish
+
+</button>
+
+<button class="saveEdit"
+onclick="saveEdit()">
+
+💾 Saqlash
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CART -->
+
+<div class="overlay"
+id="overlay"
+onclick="closeCart()">
+</div>
+
+
+<div class="cart" id="cart">
+
+<div class="cartHead">
+
+<h2>
+🛒 Savatcha
+</h2>
+
+<button class="close" onclick="closeCart()">
+×
+</button>
+
+</div>
+
+
+<div class="cartItems"
+id="cartItems">
+</div>
+
+
+<div class="cartTotal">
+
+<div class="total">
+
+<span>
+Jami
+</span>
+
+<span id="cartTotal">
+0 so‘m
+</span>
+
+</div>
+
+
+<div class="payTitle">
+To‘lov turi
+</div>
+
+
+<div class="payBtns">
+
+<button
+class="pay selected"
+id="cashPay"
+onclick="paymentType('Naqd')">
+
+💵 Naqd
+
+</button>
+
+<button
+class="pay"
+id="cardPay"
+onclick="paymentType('Karta')">
+
+💳 Karta
+
+</button>
+
+</div>
+
+
+<button class="checkout" onclick="checkout()">
+
+✅ Buyurtma berish
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   MAHSULOTLAR
+========================= */
+
+const defaults=[
+
+[
+1,
+"Choco Dream",
+45000,
+25000,
+"cake",
+"180 g",
+"Belgiya shokoladi, Un, Tuxum, Qaymoq, Kakao",
+"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=90",
+["popular"]
+],
+
+[
+2,
+"Lemon Kiss",
+42000,
+23000,
+"cake",
+"170 g",
+"Limon, Un, Tuxum, Qand upasi, Sariyog‘",
+"https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=900&q=90",
+["new"]
+],
+
+[
+3,
+"Berry Cloud",
+48000,
+27000,
+"cake",
+"190 g",
+"Qulupnay, Malina, Maskarpone, Un, Vanil",
+"https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=900&q=90",
+["popular"]
+],
+
+[
+4,
+"Dark Velvet",
+50000,
+29000,
+"cake",
+"200 g",
+"Qora shokolad 70%, Kakao, Qaymoq, Tuxum",
+"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=90",
+[]
+],
+
+[
+5,
+"Kiwi Mood",
+43000,
+24000,
+"cake",
+"175 g",
+"Kivi, Krem, Un, Tuxum, Shakar",
+"https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=90",
+[]
+],
+
+[
+6,
+"Orange Sun",
+41000,
+22000,
+"cake",
+"180 g",
+"Apelsin, Un, Tuxum, Shakar, Kardamon",
+"https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=90",
+["new"]
+],
+
+[
+7,
+"Green Tea",
+15000,
+7000,
+"tea",
+"450 ml",
+"Ko‘k choy barglari, Yasmin",
+"https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=90",
+["popular"]
+],
+
+[
+8,
+"Black Tea",
+14000,
+6500,
+"tea",
+"450 ml",
+"Qora Seylon choyi, Tog‘ kiyiko‘ti",
+"https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=900&q=90",
+[]
+],
+
+[
+9,
+"Lemon Tea",
+18000,
+8000,
+"tea",
+"500 ml",
+"Limon, Tog‘ asali, Yalpiz, Qora choy",
+"https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=90",
+["popular"]
+],
+
+[
+10,
+"Berry Tea",
+20000,
+9000,
+"tea",
+"500 ml",
+"Malina, Qulupnay, Zirk, Gibiskus",
+"https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=900&q=90",
+[]
+]
+
+];
+
+
+/* =========================
+   LOCAL STORAGE
+========================= */
+
+let products=
+JSON.parse(localStorage.getItem("mozziProducts")||"null");
+
+if(!products){
+
+products=defaults.map(x=>({
+
+id:x[0],
+name:x[1],
+price:x[2],
+cost:x[3],
+category:x[4],
+weight:x[5],
+ingredients:x[6],
+image:x[7],
+tags:x[8],
+stock:50
+
+}));
+
+saveProducts();
+
+}
+
+
+let sales=
+JSON.parse(localStorage.getItem("mozziSales")||"[]");
+
+let ratings=
+JSON.parse(localStorage.getItem("mozziRatings")||"{}");
+
+let comments=
+JSON.parse(localStorage.getItem("mozziComments")||"{}");
+
+
+let cart=[];
+let pay="Naqd";
+let current="all";
+let newImage="";
+let editImage="";
+
+
+/* =========================
+   YORDAMCHI FUNKSIYALAR
+========================= */
+
+function saveProducts(){
+
+localStorage.setItem(
+"mozziProducts",
+JSON.stringify(products)
+);
+
+}
+
+
+function money(n){
+
+return Number(n||0).toLocaleString("uz-UZ")+" so‘m";
+
+}
+
+
+function esc(x){
+
+let d=document.createElement("div");
+
+d.textContent=x??"";
+
+return d.innerHTML;
+
+}
+
+
+function dateKey(d=new Date()){
+
+return d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
+
+}
+
+
+function sold(id){
+
+return sales
+.filter(x=>Number(x.productId)===Number(id))
+.reduce((a,x)=>a+Number(x.quantity||0),0);
+
+}
+
+
+function qty(id){
+
+let x=cart.find(a=>a.id===id);
+
+return x?x.qty:0;
+
+}
+
+
+function go(id){
+
+document
+.getElementById(id)
+.scrollIntoView({behavior:"smooth"});
+
+}
+
+
+/* =========================
+   MAHSULOTLARNI CHIQARISH
+========================= */
+
+function render(filter="all"){
+
+let cake=document.getElementById("cakeGrid");
+let tea=document.getElementById("teaGrid");
+
+cake.innerHTML="";
+tea.innerHTML="";
+
+
+products.forEach(p=>{
+
+let show=
+filter==="all"||
+filter===p.category||
+filter==="popular"&&p.tags.includes("popular")||
+filter==="new"&&p.tags.includes("new");
+
+
+if(!show)return;
+
+
+let r=ratings[p.id]||0;
+
+let stars="";
+
+
+for(let i=1;i<=5;i++){
+
+stars+=`
+
+<button
+class="star ${i<=r?"active":""}"
+onclick="rate(${p.id},${i})">
+
+★
+</button>
+
+`;
+
+}
+
+
+let commentsHTML="";
+
+
+(comments[p.id]||[])
+.slice()
+.reverse()
+.forEach(c=>{
+
+commentsHTML+=`
+
+<div class="comment">
+
+<div class="commentStars">
+
+${"★".repeat(c.rating)}
+${"☆".repeat(5-c.rating)}
+
+</div>
+
+"${esc(c.text)}"
+
+<div style="font-size:10px;color:#a88">
+${c.date}
+</div>
+
+</div>
+
+`;
+
+});
+
+
+let badge=
+p.tags.includes("popular")
+?
+"<div class='badge'>⭐ Mashhur</div>"
+:
+p.tags.includes("new")
+?
+"<div class='badge'>✨ Yangi</div>"
+:
+"";
+
+
+let card=`
+
+<div class="card">
+
+<div class="cardImg">
+
+<img
+src="${p.image}"
+alt="${esc(p.name)}"
+>
+
+${badge}
+
+</div>
+
+
+<div class="cardBody">
+
+<h3>
+${esc(p.name)}
+</h3>
+
+<div class="desc">
+${esc(p.weight)}
+</div>
+
+
+<div class="ingredients">
+
+<b>🥣 Tarkibi:</b>
+<br>
+
+${esc(p.ingredients)}
+
+</div>
+
+
+<div class="stock">
+
+📦 Qoldiq:
+
+<b>
+${Math.max(0,p.stock-sold(p.id))}
+dona
+</b>
+
+</div>
+
+
+<div class="priceRow">
+
+<div class="price">
+${money(p.price)}
+</div>
+
+
+<div class="qty">
+
+<button onclick="changeCart(${p.id},-1)">
+−
+</button>
+
+<span>
+${qty(p.id)}
+</span>
+
+<button onclick="changeCart(${p.id},1)">
++
+</button>
+
+</div>
+
+</div>
+
+
+<div class="rating">
+
+${stars}
+
+<span class="ratingText">
+
+${r?r+".0 / 5":"Baholanmagan"}
+
+</span>
+
+</div>
+
+
+<button
+class="commentBtn"
+onclick="toggleComment(${p.id})">
+
+💬 Izoh qoldirish
+
+</button>
+
+
+<div
+class="commentForm"
+id="cf${p.id}"
+>
+
+<textarea
+id="ct${p.id}"
+placeholder="Fikringiz..."
+></textarea>
+
+<button onclick="comment(${p.id})">
+
+Izoh yuborish
+
+</button>
+
+</div>
+
+
+${commentsHTML}
+
+</div>
+
+</div>
+`;
+
+
+(p.category==="cake"?cake:tea)
+.innerHTML+=card;
+
+});
+
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+function filter(x,b){
+
+current=x;
+
+document
+.querySelectorAll(".filters button")
+.forEach(a=>a.classList.remove("active"));
+
+b.classList.add("active");
+
+render(x);
+
+}
+
+
+/* =========================
+   RATING
+========================= */
+
+function rate(id,n){
+
+ratings[id]=n;
+
+localStorage.setItem(
+"mozziRatings",
+JSON.stringify(ratings)
+);
+
+render(current);
+
+}
+
+
+function toggleComment(id){
+
+let x=document.getElementById("cf"+id);
+
+x.style.display=
+x.style.display==="block"
+?
+"none"
+:
+"block";
+
+}
+
+
+function comment(id){
+
+let text=
+document.getElementById("ct"+id)
+.value
+.trim();
+
+
+if(!ratings[id]){
+
+alert("Avval ⭐ baho bering.");
+
+return;
+
+}
+
+
+if(!text)return;
+
+
+if(!comments[id])
+comments[id]=[];
+
+
+comments[id].push({
+
+text,
+rating:ratings[id],
+date:new Date().toLocaleDateString("uz-UZ")
+
+});
+
+
+localStorage.setItem(
+"mozziComments",
+JSON.stringify(comments)
+);
+
+render(current);
+
+}
+
+
+/* =========================
+   SAVATCHA
+========================= */
+
+function changeCart(id,n){
+
+let p=products.find(x=>x.id===id);
+
+if(!p)return;
+
+
+let remain=
+Math.max(0,p.stock-sold(id));
+
+let x=
+cart.find(a=>a.id===id);
+
+
+if(n>0){
+
+if(remain<=0){
+
+alert("Bu mahsulot qolmagan.");
+
+return;
+
+}
+
+
+if(
+cart.reduce((a,b)=>a+b.qty,0)>=50
+){
+
+alert(
+"Bir buyurtmada maksimum 50 dona."
+);
+
+return;
+
+}
+
+
+if(!x){
+
+x={
+id,
+qty:0
+};
+
+cart.push(x);
+
+}
+
+
+if(x.qty>=remain){
+
+alert(
+"Qoldiqdan ko‘p tanlab bo‘lmaydi."
+);
+
+return;
+
+}
+
+
+x.qty++;
+
+}
+
+
+else if(x){
+
+x.qty--;
+
+if(x.qty<=0){
+
+cart=
+cart.filter(a=>a.id!==id);
+
+}
+
+}
+
+
+updateCart();
+render(current);
+
+}
+
+
+function updateCart(){
+
+let box=
+document.getElementById("cartItems");
+
+let total=0;
+let count=0;
+
+box.innerHTML="";
+
+
+cart.forEach(x=>{
+
+let p=
+products.find(a=>a.id===x.id);
+
+if(!p)return;
+
+
+total+=p.price*x.qty;
+count+=x.qty;
+
+
+box.innerHTML+=`
+
+<div class="cartItem">
+
+<div>
+
+<b>
+${esc(p.name)}
+</b>
+
+<br>
+
+<small>
+${money(p.price)}
+</small>
+
+</div>
+
+
+<div class="qty">
+
+<button onclick="changeCart(${p.id},-1)">
+−
+</button>
+
+<span>
+${x.qty}
+</span>
+
+<button onclick="changeCart(${p.id},1)">
++
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+if(!cart.length){
+
+box.innerHTML=`
+
+<div style="text-align:center;padding:50px">
+
+🛒
+
+<br><br>
+
+Savatcha bo‘sh
+
+</div>
+
+`;
+
+}
+
+
+document
+.getElementById("cartCount")
+.textContent=count;
+
+
+document
+.getElementById("cartTotal")
+.textContent=money(total);
+
+}
+
+
+function openCart(){
+
+document
+.getElementById("cart")
+.classList.add("show");
+
+document
+.getElementById("overlay")
+.classList.add("show");
+
+}
+
+
+function closeCart(){
+
+document
+.getElementById("cart")
+.classList.remove("show");
+
+document
+.getElementById("overlay")
+.classList.remove("show");
+
+}
+
+
+function paymentType(x){
+
+pay=x;
+
+document
+.getElementById("cashPay")
+.classList.toggle(
+"selected",
+x==="Naqd"
+);
+
+document
+.getElementById("cardPay")
+.classList.toggle(
+"selected",
+x==="Karta"
+);
+
+}
+
+
+/* =========================
+   BUYURTMA
+========================= */
+
+function checkout(){
+
+if(!cart.length){
+
+alert("🛒 Savatcha bo‘sh.");
+
+return;
+
+}
+
+
+let total=0;
+
+
+for(let x of cart){
+
+let p=
+products.find(a=>a.id===x.id);
+
+
+if(
+x.qty>
+Math.max(0,p.stock-sold(p.id))
+){
+
+alert(
+p.name+
+" mahsulotidan qoldiq yetarli emas."
+);
+
+return;
+
+}
+
+}
+
+
+cart.forEach(x=>{
+
+let p=
+products.find(a=>a.id===x.id);
+
+let revenue=
+p.price*x.qty;
+
+let cost=
+p.cost*x.qty;
+
+total+=revenue;
+
+
+sales.push({
+
+date:dateKey(),
+
+productId:p.id,
+
+productName:p.name,
+
+quantity:x.qty,
+
+revenue,
+
+cost,
+
+profit:revenue-cost,
+
+payment:pay,
+
+time:new Date()
+.toLocaleTimeString("uz-UZ")
+
+});
+
+});
+
+
+localStorage.setItem(
+"mozziSales",
+JSON.stringify(sales)
+);
+
+
+alert(
+"✅ Buyurtma qabul qilindi!\n\n"+
+"💰 "+money(total)+
+"\n💳 "+pay
+);
+
+
+cart=[];
+
+updateCart();
+
+render(current);
+
+admin();
+
+settingsMoney();
+
+closeCart();
+
+}
+
+
+/* =========================
+   HAFTA BOSHI
+========================= */
+
+function getWeekStart(date){
+
+let d=new Date(date);
+
+let day=d.getDay();
+
+if(day===0)
+day=7;
+
+d.setDate(
+d.getDate()-(day-1)
+);
+
+d.setHours(0,0,0,0);
+
+return d;
+
+}
+
+
+/* =========================
+   HAFTA OXIRI
+========================= */
+
+function getWeekEnd(date){
+
+let d=getWeekStart(date);
+
+d.setDate(
+d.getDate()+6
+);
+
+d.setHours(23,59,59,999);
+
+return d;
+
+}
+
+
+/* =========================
+   SANA
+========================= */
+
+function formatDate(date){
+
+return String(
+date.getDate()
+).padStart(2,"0")+
+"."+
+String(
+date.getMonth()+1
+).padStart(2,"0")+
+"."+
+date.getFullYear();
+
+}
+
+
+/* =========================
+   HAFTALIK STATISTIKA
+========================= */
+
+function weeklyStatistics(){
+
+let box=
+document.getElementById(
+"weeklyStats"
+);
+
+if(!box)return;
+
+
+let weeks={};
+
+
+sales.forEach(s=>{
+
+let d=
+new Date(
+s.date+"T00:00:00"
+);
+
+if(isNaN(d))return;
+
+
+let start=
+getWeekStart(d);
+
+let end=
+getWeekEnd(d);
+
+
+let key=
+start.getFullYear()+
+"-"+
+String(
+start.getMonth()+1
+).padStart(2,"0")+
+"-"+
+String(
+start.getDate()
+).padStart(2,"0");
+
+
+if(!weeks[key]){
+
+weeks[key]={
+
+start,
+end,
+revenue:0,
+quantity:0,
+profit:0,
+cash:0,
+card:0
+
+};
+
+}
+
+
+weeks[key].revenue+=
+Number(s.revenue||0);
+
+weeks[key].quantity+=
+Number(s.quantity||0);
+
+weeks[key].profit+=
+Number(s.profit||0);
+
+
+if(s.payment==="Naqd"){
+
+weeks[key].cash+=
+Number(s.revenue||0);
+
+}
+
+
+if(s.payment==="Karta"){
+
+weeks[key].card+=
+Number(s.revenue||0);
+
+}
+
+});
+
+
+let list=
+Object.values(weeks)
+.sort(
+(a,b)=>b.start-a.start
+);
+
+
+if(!list.length){
+
+box.innerHTML=
+"<p>Hali savdo ma'lumotlari yo‘q.</p>";
+
+return;
+
+}
+
+
+box.innerHTML="";
+
+
+list.forEach((w,index)=>{
+
+let current=index===0;
+
+
+box.innerHTML+=`
+
+<div class="periodRow">
+
+<div>
+
+<b>
+${current?
+"🟢 Joriy hafta":
+"📅 Hafta"}
+</b>
+
+<br>
+
+<small>
+${formatDate(w.start)}
+-
+${formatDate(w.end)}
+</small>
+
+<br>
+
+<small>
+
+📦 ${w.quantity} dona
+
+&nbsp; | &nbsp;
+
+💵 Naqd: ${money(w.cash)}
+
+&nbsp; | &nbsp;
+
+💳 Karta: ${money(w.card)}
+
+<br>
+
+💰 Foyda:
+${money(w.profit)}
+
+</small>
+
+</div>
+
+
+<span>
+${money(w.revenue)}
+</span>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* =========================
+   OY NOMLARI
+========================= */
+
+const monthNames=[
+
+"Yanvar",
+"Fevral",
+"Mart",
+"Aprel",
+"May",
+"Iyun",
+"Iyul",
+"Avgust",
+"Sentabr",
+"Oktabr",
+"Noyabr",
+"Dekabr"
+
+];
+
+
+/* =========================
+   OYLIK STATISTIKA
+========================= */
+
+function monthlyStatistics(){
+
+let box=
+document.getElementById(
+"monthlyStats"
+);
+
+if(!box)return;
+
+
+let months={};
+
+
+sales.forEach(s=>{
+
+let d=
+new Date(
+s.date+"T00:00:00"
+);
+
+if(isNaN(d))return;
+
+
+let key=
+d.getFullYear()+
+"-"+
+String(
+d.getMonth()+1
+).padStart(2,"0");
+
+
+if(!months[key]){
+
+months[key]={
+
+year:d.getFullYear(),
+
+month:d.getMonth(),
+
+revenue:0,
+
+quantity:0,
+
+profit:0,
+
+cash:0,
+
+card:0
+
+};
+
+}
+
+
+months[key].revenue+=
+Number(s.revenue||0);
+
+months[key].quantity+=
+Number(s.quantity||0);
+
+months[key].profit+=
+Number(s.profit||0);
+
+
+if(s.payment==="Naqd"){
+
+months[key].cash+=
+Number(s.revenue||0);
+
+}
+
+
+if(s.payment==="Karta"){
+
+months[key].card+=
+Number(s.revenue||0);
+
+}
+
+});
+
+
+let list=
+Object.values(months)
+.sort((a,b)=>{
+
+if(a.year!==b.year)
+return b.year-a.year;
+
+return b.month-a.month;
+
+});
+
+
+if(!list.length){
+
+box.innerHTML=
+"<p>Hali savdo ma'lumotlari yo‘q.</p>";
+
+return;
+
+}
+
+
+box.innerHTML="";
+
+
+list.forEach((m,index)=>{
+
+let now=new Date();
+
+let current=
+now.getFullYear()===m.year &&
+now.getMonth()===m.month;
+
+
+box.innerHTML+=`
+
+<div class="periodRow">
+
+<div>
+
+<b>
+
+${current?
+"🟢 Joriy oy":
+"📆 "+monthNames[m.month]}
+
+</b>
+
+<br>
+
+<small>
+${m.year}-yil
+</small>
+
+<br>
+
+<small>
+
+📦 ${m.quantity} dona
+
+&nbsp; | &nbsp;
+
+💵 Naqd: ${money(m.cash)}
+
+&nbsp; | &nbsp;
+
+💳 Karta: ${money(m.card)}
+
+<br>
+
+💰 Foyda:
+${money(m.profit)}
+
+</small>
+
+</div>
+
+
+<span>
+${money(m.revenue)}
+</span>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* =========================
+   UMUMIY STATISTIKA
+========================= */
+
+function total(arr,key){
+
+return arr.reduce(
+(a,x)=>a+Number(x[key]||0),
+0
+);
+
+}
+
+
+function paySum(arr,type){
+
+return arr
+.filter(x=>x.payment===type)
+.reduce(
+(a,x)=>a+Number(x.revenue||0),
+0
+);
+
+}
+
+
+function admin(){
+
+let today=
+dateKey();
+
+
+let y=new Date();
+
+y.setDate(
+y.getDate()-1
+);
+
+
+let yesterday=
+dateKey(y);
+
+
+let ts=
+sales.filter(
+x=>x.date===today
+);
+
+
+let ys=
+sales.filter(
+x=>x.date===yesterday
+);
+
+
+let tr=
+total(ts,"revenue");
+
+let yr=
+total(ys,"revenue");
+
+
+document
+.getElementById("todayRevenue")
+.textContent=
+money(tr);
+
+
+document
+.getElementById("todayCash")
+.textContent=
+money(
+paySum(ts,"Naqd")
+);
+
+
+document
+.getElementById("todayCard")
+.textContent=
+money(
+paySum(ts,"Karta")
+);
+
+
+document
+.getElementById("todayCount")
+.textContent=
+total(ts,"quantity")+
+" dona";
+
+
+document
+.getElementById("todayProfit")
+.textContent=
+money(
+total(ts,"profit")
+);
+
+
+document
+.getElementById("yesterdayRevenue")
+.textContent=
+money(yr);
+
+
+document
+.getElementById("yesterdayCash")
+.textContent=
+money(
+paySum(ys,"Naqd")
+);
+
+
+document
+.getElementById("yesterdayCard")
+.textContent=
+money(
+paySum(ys,"Karta")
+);
+
+
+let diff=
+document.getElementById(
+"difference"
+);
+
+
+diff.textContent=
+(tr-yr>=0?"▲ ":"▼ ")+
+money(Math.abs(tr-yr));
+
+
+let best=null;
+
+
+products.forEach(p=>{
+
+let s=sold(p.id);
+
+if(!best||s>best.s){
+
+best={
+name:p.name,
+s
+};
+
+}
+
+});
+
+
+document
+.getElementById("bestProduct")
+.textContent=
+best&&best.s
+?
+best.name+" — "+best.s+" dona"
+:
+"Hali sotuv yo‘q";
+
+
+document
+.getElementById("totalStock")
+.textContent=
+products.reduce(
+(a,p)=>
+a+
+Math.max(
+0,
+p.stock-sold(p.id)
+),
+0
+)+" dona";
+
+
+let tb=
+document.getElementById(
+"statsTable"
+);
+
+tb.innerHTML="";
+
+
+products.forEach(p=>{
+
+let a=
+sales.filter(
+x=>
+Number(x.productId)===
+Number(p.id)
+);
+
+
+tb.innerHTML+=`
+
+<tr>
+
+<td>
+<b>
+${esc(p.name)}
+</b>
+</td>
+
+<td>
+${total(a,"quantity")}
+</td>
+
+<td>
+${money(
+total(a,"revenue")
+)}
+</td>
+
+<td>
+${money(
+total(a,"cost")
+)}
+</td>
+
+<td style="color:#168449;font-weight:bold">
+
+${money(
+total(a,"profit")
+)}
+
+</td>
+
+<td>
+${Math.max(
+0,
+p.stock-sold(p.id)
+)}
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+/* HAFTA VA OY */
+
+weeklyStatistics();
+
+monthlyStatistics();
+
+}
+
+
+/* =========================
+   ADMIN OCHISH
+========================= */
+
+function toggleAdmin(){
+
+let x=
+document.getElementById(
+"adminPanel"
+);
+
+x.classList.toggle("show");
+
+
+if(x.classList.contains("show")){
+
+admin();
+
+x.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+}
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+function openSettings(){
+
+document
+.getElementById("settings")
+.classList.add("show");
+
+manage();
+
+settingsMoney();
+
+}
+
+
+function closeSettings(){
+
+document
+.getElementById("settings")
+.classList.remove("show");
+
+}
+
+
+/* =========================
+   YANGI RASM
+========================= */
+
+document
+.getElementById("newImage")
+.onchange=function(e){
+
+let f=e.target.files[0];
+
+if(!f)return;
+
+
+let r=
+new FileReader();
+
+
+r.onload=function(){
+
+newImage=r.result;
+
+document
+.getElementById("newPreviewImg")
+.src=newImage;
+
+document
+.getElementById("newPreview")
+.style.display="block";
+
+};
+
+
+r.readAsDataURL(f);
+
+};
+
+
+/* =========================
+   YANGI MAHSULOT
+========================= */
+
+function addProduct(){
+
+let name=
+document
+.getElementById("newName")
+.value
+.trim();
+
+
+let price=
+Number(
+document
+.getElementById("newPrice")
+.value
+);
+
+
+let cost=
+Number(
+document
+.getElementById("newCost")
+.value
+);
+
+
+let stock=
+Number(
+document
+.getElementById("newStock")
+.value
+);
+
+
+if(
+!name||
+price<=0||
+stock<0
+){
+
+alert(
+"Nom, narx va qoldiqni to‘g‘ri kiriting."
+);
+
+return;
+
+}
+
+
+let p={
+
+id:Date.now(),
+
+name,
+
+price,
+
+cost,
+
+stock,
+
+category:
+document
+.getElementById("newCategory")
+.value,
+
+weight:
+document
+.getElementById("newWeight")
+.value||
+"1 dona",
+
+ingredients:
+document
+.getElementById("newIngredients")
+.value||
+"Tarkibi ko‘rsatilmagan",
+
+image:
+newImage||
+"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=90",
+
+tags:[]
+
+};
+
+
+products.push(p);
+
+saveProducts();
+
+
+[
+"newName",
+"newPrice",
+"newCost",
+"newStock",
+"newWeight",
+"newIngredients"
+]
+.forEach(id=>{
+
+document
+.getElementById(id)
+.value="";
+
+});
+
+
+document
+.getElementById("newImage")
+.value="";
+
+
+document
+.getElementById("newPreview")
+.style.display="none";
+
+
+newImage="";
+
+
+render(current);
+
+manage();
+
+admin();
+
+alert(
+"✅ Yangi mahsulot qo‘shildi!"
+);
+
+}
+
+
+/* =========================
+   MAHSULOTLARNI BOSHQARISH
+========================= */
+
+function manage(){
+
+let box=
+document.getElementById(
+"manageProducts"
+);
+
+box.innerHTML="";
+
+
+products.forEach(p=>{
+
+box.innerHTML+=`
+
+<div class="manageItem">
+
+<div class="manageTop">
+
+<img
+class="manageThumb"
+src="${p.image}"
+>
+
+<div class="manageInfo">
+
+<b>
+${esc(p.name)}
+</b>
+
+<small>
+💰 ${money(p.price)}
+</small>
+
+<small>
+📦 Qoldiq:
+${Math.max(
+0,
+p.stock-sold(p.id)
+)}
+dona
+</small>
+
+</div>
+
+</div>
+
+
+<div class="manageButtons">
+
+<button
+class="editBtn"
+onclick="editOpen(${p.id})"
+>
+
+✏️ Tahrirlash
+
+</button>
+
+
+<button
+class="deleteBtn"
+onclick="removeProduct(${p.id})"
+>
+
+🗑 O‘chirish
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* =========================
+   TAHRIRLASH
+========================= */
+
+function editOpen(id){
+
+let p=
+products.find(
+x=>x.id===id
+);
+
+if(!p)return;
+
+
+document
+.getElementById("editId")
+.value=id;
+
+
+document
+.getElementById("editName")
+.value=p.name;
+
+
+document
+.getElementById("editPrice")
+.value=p.price;
+
+
+document
+.getElementById("editCost")
+.value=p.cost;
+
+
+document
+.getElementById("editStock")
+.value=p.stock;
+
+
+document
+.getElementById("editCategory")
+.value=p.category;
+
+
+document
+.getElementById("editWeight")
+.value=p.weight||"";
+
+
+document
+.getElementById("editIngredients")
+.value=p.ingredients||"";
+
+
+document
+.getElementById("editPreviewImg")
+.src=p.image;
+
+
+document
+.getElementById("editImage")
+.value="";
+
+
+editImage="";
+
+
+document
+.getElementById("editModal")
+.classList.add("show");
+
+}
+
+
+/* =========================
+   EDIT RASM
+========================= */
+
+document
+.getElementById("editImage")
+.onchange=function(e){
+
+let f=e.target.files[0];
+
+if(!f)return;
+
+
+let r=
+new FileReader();
+
+
+r.onload=function(){
+
+editImage=r.result;
+
+document
+.getElementById("editPreviewImg")
+.src=editImage;
+
+};
+
+
+r.readAsDataURL(f);
+
+};
+
+
+/* =========================
+   SAQLASH
+========================= */
+
+function saveEdit(){
+
+let id=
+Number(
+document
+.getElementById("editId")
+.value
+);
+
+
+let p=
+products.find(
+x=>x.id===id
+);
+
+
+if(!p)return;
+
+
+let name=
+document
+.getElementById("editName")
+.value
+.trim();
+
+
+let price=
+Number(
+document
+.getElementById("editPrice")
+.value
+);
+
+
+let cost=
+Number(
+document
+.getElementById("editCost")
+.value
+);
+
+
+let stock=
+Number(
+document
+.getElementById("editStock")
+.value
+);
+
+
+if(!name){
+
+alert(
+"Mahsulot nomini kiriting."
+);
+
+return;
+
+}
+
+
+if(price<=0){
+
+alert(
+"Narx 0 dan katta bo‘lishi kerak."
+);
+
+return;
+
+}
+
+
+if(stock<0){
+
+alert(
+"Qoldiq noto‘g‘ri."
+);
+
+return;
+
+}
+
+
+p.name=name;
+
+p.price=price;
+
+p.cost=cost;
+
+p.stock=stock;
+
+p.category=
+document
+.getElementById("editCategory")
+.value;
+
+p.weight=
+document
+.getElementById("editWeight")
+.value||
+"1 dona";
+
+p.ingredients=
+document
+.getElementById("editIngredients")
+.value||
+"Tarkibi ko‘rsatilmagan";
+
+
+if(editImage)
+p.image=editImage;
+
+
+saveProducts();
+
+render(current);
+
+manage();
+
+admin();
+
+settingsMoney();
+
+closeEdit();
+
+
+alert(
+"✅ Mahsulot ma'lumotlari saqlandi!"
+);
+
+}
+
+
+function closeEdit(){
+
+document
+.getElementById("editModal")
+.classList.remove("show");
+
+}
+
+
+/* =========================
+   O‘CHIRISH
+========================= */
+
+function removeProduct(id){
+
+let p=
+products.find(
+x=>x.id===id
+);
+
+if(!p)return;
+
+
+if(!confirm(
+"❗ "+p.name+
+"\n\nMahsulotni o‘chirishni xohlaysizmi?"
+))
+return;
+
+
+products=
+products.filter(
+x=>x.id!==id
+);
+
+
+cart=
+cart.filter(
+x=>x.id!==id
+);
+
+
+saveProducts();
+
+render(current);
+
+manage();
+
+admin();
+
+settingsMoney();
+
+updateCart();
+
+
+alert(
+"🗑 Mahsulot o‘chirildi!"
+);
+
+}
+
+
+/* =========================
+   PUL STATISTIKASI
+========================= */
+
+function settingsMoney(){
+
+let today=
+dateKey();
+
+
+let d=new Date();
+
+d.setDate(
+d.getDate()-1
+);
+
+
+let yesterday=
+dateKey(d);
+
+
+let todaySales=
+sales.filter(
+x=>x.date===today
+);
+
+
+let yesterdaySales=
+sales.filter(
+x=>x.date===yesterday
+);
+
+
+document
+.getElementById("setTotal")
+.textContent=
+money(
+total(sales,"revenue")
+);
+
+
+document
+.getElementById("setCash")
+.textContent=
+money(
+paySum(sales,"Naqd")
+);
+
+
+document
+.getElementById("setCard")
+.textContent=
+money(
+paySum(sales,"Karta")
+);
+
+
+document
+.getElementById("setToday")
+.textContent=
+money(
+total(todaySales,"revenue")
+);
+
+
+document
+.getElementById("setYesterday")
+.textContent=
+money(
+total(yesterdaySales,"revenue")
+);
+
+}
+
+
+/* =========================
+   KARTA
+========================= */
+
+document
+.getElementById("cardNumber")
+.value=
+localStorage.getItem(
+"mozziCard"
+)||
+"9860 1609 4609 5671";
+
+
+function saveCard(){
+
+localStorage.setItem(
+"mozziCard",
+document
+.getElementById("cardNumber")
+.value
+.trim()
+);
+
+alert(
+"✅ Karta raqami saqlandi."
+);
+
+}
+
+
+/* =========================
+   TIL
+========================= */
+
+function changeLanguage(){
+
+localStorage.setItem(
+"mozziLanguage",
+document
+.getElementById("language")
+.value
+);
+
+alert(
+"✅ Til sozlamasi saqlandi."
+);
+
+}
+
+
+/* =========================
+   SAVDOLARNI TOZALASH
+========================= */
+
+function resetSales(){
+
+if(!confirm(
+"❗ Barcha savdo statistikasi o‘chirilsinmi?"
+))
+return;
+
+
+sales=[];
+
+
+localStorage.setItem(
+"mozziSales",
+"[]"
+);
+
+
+admin();
+
+settingsMoney();
+
+
+alert(
+"✅ Savdo statistikasi tozalandi."
+);
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+render();
+
+updateCart();
+
+admin();
+
+settingsMoney();
+
+manage();
+
+</script>
+
+</body>
+</html>
